@@ -1,0 +1,20 @@
+{
+  "name": "chaiaurbackendyoutubeseriescomplete",
+  "version": "1.0.0",
+  "description": "Chai aur code youtube playlist code",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Vinit",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
