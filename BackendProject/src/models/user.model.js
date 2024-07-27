@@ -69,6 +69,7 @@ userSchema.methods.generateAccessToken = function(){
             userName: this.userName,
             fullName: this.fullName
         },
+        
         process.env.ACCESS_TOKEN_SECRET,
         {
             expiresIn: ACCESS_TOKEN_EXPIRY 
