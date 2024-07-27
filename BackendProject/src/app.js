@@ -1,5 +1,5 @@
-import mongoose  from "mongoose";
-import CookieParser from "cookieparser";
+import express  from "express";
+import CookieParser from "cookie-parser";
 import cors from "cors"
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(CookieParser()) // To access cookies in user's browser and be able to se
 
 
 //Routes Import
-import userRouter from './routes/user.router.js'
+import userRouter from './routes/user.route.js'
 
 
 //Routes declaration
