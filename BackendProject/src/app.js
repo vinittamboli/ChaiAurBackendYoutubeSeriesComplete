@@ -20,3 +20,15 @@ app.use(express.urlencoded({
 app.use(express.static("public")) //For saving some public data on Server locally
 
 app.use(CookieParser()) // To access cookies in user's browser and be able to set them. 
+
+
+//Routes Import
+import userRouter from './routes/user.router.js'
+
+
+//Routes declaration
+app.use("/api/v1/users", userRouter)
+
+
+
+export {app}
