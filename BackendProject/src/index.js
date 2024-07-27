@@ -3,10 +3,22 @@ console.log("In main index file")
 import connectDB from "./db/index.js";
 import dotenv from "dotenv";
 
+
 dotenv.config({
     path: './env'
 })
 connectDB();
+
+
+
+
+
+
+
+
+
+
+
 
 // import express from "express"
 // const app = express()
