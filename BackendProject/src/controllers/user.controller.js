@@ -18,15 +18,13 @@ const generateAccessAndRefreshToken = async (userId) =>{
 
 
     } catch (error) {
-        throw new ApiError(500, "Something went wrong while generating the refresh and access token")
+        //throw new ApiError(500, "Something went wrong while generating the refresh and access token")
     }
 }
 
 
 const registerUser = asyncHandler( async (req, res) => {
-    // Get user details from from frontend : DONE
-    // Validation - Not empty : DONE
-    // Check if user already exists - Check with username and email : DONE
+    
     // Check if files are attached - avatar and cover images : DONE
     // Upload them to cloudinary : DONE
     // Create the user object - create entry in db : DONE
@@ -34,9 +32,11 @@ const registerUser = asyncHandler( async (req, res) => {
     // Check for user creation : DONE
     // Return response : DONE
 
-
+    // Get user details from from frontend : DONE
     const {username, email, fullName, password } = req.body
     
+    // Validation - Not empty : DONE
+
     if (fullName === ""){
         throw new ApiError(400, "fullname is required")
     }
@@ -46,13 +46,13 @@ const registerUser = asyncHandler( async (req, res) => {
         .some((field) => 
                 {
                     return field?.trim() ===""
-                }
+                })
             )
-        )
         {
                 throw new ApiError(400, "Please provide all fields")
         }
 
+    // Check if user already exists - Check with username and email : DONE
     const existedUser = await User.findOne({
         $or: [{ username }, { email }]
     })
@@ -113,7 +113,7 @@ const loginUser = asyncHandler(async (req, res) => {
     const {email, username, password} = req.body
 
     if (!username || !email){
-        throw new ApiError(400, "Username or password is required")
+        //throw new ApiError(400, "Username or password is required")
     }
 
     const user = await User.findOne({
@@ -121,13 +121,13 @@ const loginUser = asyncHandler(async (req, res) => {
     })
 
     if(!user){
-        throw new ApiError(400, "username or email does not exist")
+       // throw new ApiError(400, "username or email does not exist")
     }
 
     isPasswordvalid = await user.isPasswordCorrect(password)
 
     if(!isPasswordvalid) {
-        throw new ApiError(401, "Invalid user credentials")
+       // throw new ApiError(401, "Invalid user credentials")
     }
 
         const {accessToken, refreshToken} = await generateAccessAndRefreshToken(user._id)
@@ -178,12 +178,10 @@ const logoutUser = asyncHandler(async(req, res) => {
     .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, {}, "User logged out"))
 
-
-
-
 })
 
 export {
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 }
